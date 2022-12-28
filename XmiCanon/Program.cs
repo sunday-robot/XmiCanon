@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace XmiCanon
+namespace XmiCanon2
 {
     public sealed class Program
     {

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "XmiCanon2": {
+      "commandName": "Project",
+      "workingDirectory": "."
+    }
+  }
+}
