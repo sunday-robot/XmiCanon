@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "XmiCanon": {
+      "commandName": "Project",
+      "commandLineArgs": "workbench.xmi",
+      "workingDirectory": "."
+    }
+  }
+}
