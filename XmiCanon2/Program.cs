@@ -8,7 +8,9 @@ namespace XmiCanon2
         public static void Main(string[] args)
         {
             //Sample();
-            ParseWorkbenchXmi();
+            //ParseWorkbenchXmi();
+            var root = XmiLoader.Load("workbench.xmi");
+            XmiPrinter.Print(root);
         }
 
         static void ParseWorkbenchXmi()
