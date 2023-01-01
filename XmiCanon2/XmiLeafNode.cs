@@ -6,11 +6,11 @@
     /// ・子ノードを持たない<br/>
     /// ・Textデータを持つ<br/>
     /// </summary>
-    public sealed class LeafNode : AbstractNode
+    public sealed class XmiLeafNode : AbstractXmiNode
     {
         public readonly string Text;
 
-        public LeafNode(string name, List<(string, string)> attributes, string text) : base(name, attributes)
+        public XmiLeafNode(XmiName name, List<XmiAttribute> attributes, string text) : base(name, attributes)
         {
             Text = text;
         }

@@ -8,11 +8,11 @@ namespace XmiCanon2
     /// ・子ノードを持つ<br/>
     /// ・Textデータを持たない<br/>
     /// </summary>
-    public sealed class InnerNode : AbstractNode
+    public sealed class XmiInnerNode : AbstractXmiNode
     {
-        public IReadOnlyCollection<AbstractNode> Children;
+        public IReadOnlyCollection<AbstractXmiNode> Children;
 
-        public InnerNode(string name, List<(string, string)> sortedAttributes, List<AbstractNode> children) : base(name, sortedAttributes)
+        public XmiInnerNode(XmiName name, List<XmiAttribute> sortedAttributes, List<AbstractXmiNode> children) : base(name, sortedAttributes)
         {
             Children = children.ToImmutableArray();
         }

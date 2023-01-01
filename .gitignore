@@ -1,3 +1,4 @@
 /.vs
 **/bin
 **/obj
+/XmiCanon2/workbench.xmi.out.xml

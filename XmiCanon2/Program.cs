@@ -9,8 +9,13 @@ namespace XmiCanon2
         {
             //Sample();
             //ParseWorkbenchXmi();
-            var root = XmiLoader.Load("workbench.xmi");
-            XmiPrinter.Print(root);
+            {
+                var inputXmiFilePath = "workbench.xmi";
+                var outputXmiFilePath = inputXmiFilePath + ".out.xml";
+                var root = XmiLoader.Load(inputXmiFilePath);
+                var writer = new StreamWriter(outputXmiFilePath);
+                XmiPrinter.Print(writer, root);
+            }
         }
 
         static void ParseWorkbenchXmi()
