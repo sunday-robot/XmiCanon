@@ -49,13 +49,10 @@ namespace XmiCanon2
             }
             else
             {
-                string value = ((XText)firstNode).Value;
-                text = FormatText(value);
+                text =  ((XText)firstNode).Value;
             }
             return new XmiLeafNode(name, attributes, text);
         }
-
-        static XmiName CreateName(XName xName) => new(xName.NamespaceName, xName.LocalName);
 
         static (XmiName, List<XmiAttribute>) GetNameAndAttributes(XElement element)
         {
@@ -63,21 +60,11 @@ namespace XmiCanon2
             var attributes = new List<XmiAttribute>();
             foreach (XAttribute attribute in element.Attributes())
             {
-                attributes.Add(new XmiAttribute(CreateName(attribute.Name), FormatText(attribute.Value)));
+                attributes.Add(new XmiAttribute(CreateName(attribute.Name), attribute.Value));
             };
             return (name, attributes);
         }
 
-        static string FormatText(string text)
-        {
-            var r = "";
-            var reader = new StringReader(text);
-            string? line;
-            while ((line = reader.ReadLine()) != null)
-            {
-                r += line.Trim();
-            }
-            return r;
-        }
+        static XmiName CreateName(XName xName) => new(xName.NamespaceName, xName.LocalName);
     }
 }

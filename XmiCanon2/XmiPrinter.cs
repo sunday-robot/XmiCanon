@@ -47,7 +47,7 @@ namespace XmiCanon2
         {
             foreach (var attribute in node.SortedAttributes)
             {
-                writer.WriteLine(indent + "    @" + FormatName(attribute.Name) + " = " + attribute.Value);
+                writer.WriteLine(indent + "    @" + FormatName(attribute.Name) + " = " + FormatText(attribute.Value));
             }
         }
 
@@ -64,7 +64,7 @@ namespace XmiCanon2
                 // 属性もテキストノードも持つ葉は、多分存在しないが、もしある場合は属性と同様に出力する。
                 if (node.Text.Length > 0)
                 {
-                    writer.WriteLine($"    {indent}(text) = \"{node.Text}\"");
+                    writer.WriteLine($"    {indent}(text) = \"{FormatText(node.Text)}\"");
                 }
             }
             else
@@ -91,6 +91,23 @@ namespace XmiCanon2
                 return NameSpaceAliaseDictionary[nameSpace];
             else
                 return nameSpace;
+        }
+
+        /// <summary>
+        /// 属性値、テキストノードの整形(行頭、行末の空白削除と改行文字の削除)を行う。
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        static string FormatText(string text)
+        {
+            var r = "";
+            var reader = new StringReader(text);
+            string? line;
+            while ((line = reader.ReadLine()) != null)
+            {
+                r += line.Trim();
+            }
+            return r;
         }
     }
 }
