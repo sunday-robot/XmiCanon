@@ -10,5 +10,17 @@
             Space = space;
             Local = local;
         }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj is XmiName xmiName)
+            {
+                return Space.Equals(xmiName.Space) && Local.Equals(xmiName.Local);
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

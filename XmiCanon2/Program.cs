@@ -14,7 +14,10 @@ namespace XmiCanon2
                 var outputXmiFilePath = inputXmiFilePath + ".out.xml";
                 var root = XmiLoader.Load(inputXmiFilePath);
                 var writer = new StreamWriter(outputXmiFilePath);
-                XmiPrinter.Print(writer, root);
+                var xmiIdToCanonId = CanonXmiIdCreater.Create(root);
+                Console.WriteLine(xmiIdToCanonId.ToString());
+                XmiPrinter2.Print(writer, root, xmiIdToCanonId);
+                writer.Close();
             }
         }
 
