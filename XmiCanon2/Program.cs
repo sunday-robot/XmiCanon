@@ -17,7 +17,7 @@ namespace XmiCanon2
                 var xmiIdToCanonId = CanonXmiIdCreater.Create(root);
                 Console.WriteLine(xmiIdToCanonId.ToString());
                 XmiPrinter2.Print(writer, root, xmiIdToCanonId);
-                writer.Close();
+                writer.Close(); // なぜかこれを行わないと書き込みバッファのフラッシュが行われず、ファイルが尻切れになってしまう。
             }
         }
 
