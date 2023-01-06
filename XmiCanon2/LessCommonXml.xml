@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rootElement>
 	<lessComonElement>
-		Text1
+		テキストと要素のどちらも含むのは本来のXMLでは正常なのだが、現実に使用されているXMLでは特殊だと思われる。
 		<emptyElement></emptyElement>
 		<blankTextElement> </blankTextElement>
-		Text2
 	</lessComonElement>
 </rootElement>
