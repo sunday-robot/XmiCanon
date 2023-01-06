@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rootElement>
+	<lessComonElement>
+		Text1
+		<emptyElement></emptyElement>
+		<blankTextElement> </blankTextElement>
+		Text2
+	</lessComonElement>
+</rootElement>
