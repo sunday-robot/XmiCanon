@@ -22,5 +22,7 @@
                 return false;
             }
         }
+
+        public override int GetHashCode() => base.GetHashCode();
     }
 }

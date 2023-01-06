@@ -4,11 +4,13 @@ namespace XmiCanon2
 {
     public static class XmiLoader
     {
-        public static XmiInnerNode Load(string xmlFilePath)
+        public static AbstractXmiNode Load(string xmlFilePath)
         {
             var xml = XDocument.Load(xmlFilePath);
-            return CreateInnerNode(xml.Root);
+            return CreateNode(xml.Root!);
         }
+
+        static AbstractXmiNode CreateNode(XElement element) => element.HasElements ?  CreateInnerNode(element) :  CreateLeafNode(element);
 
         // XMLドキュメントの本来の姿ではないが、現実に使われている多くのXMLは以下のような構造になっている。
         // 根、root ............ XMLドキュメントに一つだけ存在する。それ以外は中間の節と同じ。
@@ -20,18 +22,16 @@ namespace XmiCanon2
             // 中間の節の場合は、子要素は存在するが、テキストノードは存在しないと決め打ちしている。
             var (name, attributes) = GetNameAndAttributes(element);
             var children = new List<AbstractXmiNode>();
-            foreach (XElement childElement in element.Elements())
+            foreach (XNode childNode in element.Nodes())
             {
-                AbstractXmiNode child;
-                if (childElement.HasElements)
+                if (childNode is XElement childElement)
                 {
-                    child = CreateInnerNode(childElement);
+                    children.Add(CreateNode(childElement));
                 }
                 else
                 {
-                    child = CreateLeafNode(childElement);
+                    Console.Error.WriteLine("Warning: 子にテキストノードと要素のどちらも存在しています。(XMLとしては有効だが、あまり一般的ではない。)");
                 }
-                children.Add(child);
             }
             return new XmiInnerNode(name, attributes, children);
         }
@@ -49,7 +49,7 @@ namespace XmiCanon2
             }
             else
             {
-                text =  ((XText)firstNode).Value;
+                text = ((XText)firstNode).Value;
             }
             return new XmiLeafNode(name, attributes, text);
         }

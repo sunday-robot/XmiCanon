@@ -2,6 +2,7 @@
   "profiles": {
     "XmiCanon2": {
       "commandName": "Project",
+      "commandLineArgs": "lessCommonXml.xml",
       "workingDirectory": "."
     }
   }

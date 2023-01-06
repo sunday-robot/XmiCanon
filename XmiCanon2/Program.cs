@@ -9,15 +9,20 @@ namespace XmiCanon2
         {
             //Sample();
             //ParseWorkbenchXmi();
+            if (true)
             {
-                var inputXmiFilePath = "workbench.xmi";
-                var outputXmiFilePath = inputXmiFilePath + ".out.xml";
+                var inputXmiFilePath = args[0];
+                var outputXmiFilePath = inputXmiFilePath + ".txt";
                 var root = XmiLoader.Load(inputXmiFilePath);
                 var writer = new StreamWriter(outputXmiFilePath);
                 var xmiIdToCanonId = CanonXmiIdCreater.Create(root);
-                Console.WriteLine(xmiIdToCanonId.ToString());
                 XmiPrinter2.Print(writer, root, xmiIdToCanonId);
                 writer.Close(); // なぜかこれを行わないと書き込みバッファのフラッシュが行われず、ファイルが尻切れになってしまう。
+            }
+            if (false)
+            {
+                var root = XmiLoader.Load("nobody.xml");
+                Console.WriteLine(root);
             }
         }
 
@@ -148,7 +153,7 @@ namespace XmiCanon2
         {
             var singlelineText = "";
             var sr = new StringReader(multilineText);
-            string l;
+            string? l;
             while ((l = sr.ReadLine()) != null)
             {
                 singlelineText += l;

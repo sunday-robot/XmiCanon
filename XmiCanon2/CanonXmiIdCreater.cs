@@ -13,7 +13,7 @@ namespace XmiCanon2
         static readonly XmiName XmiIdAttributeName = new("http://www.omg.org/XMI", "id");
         static readonly XmiName ElementIdAttributeName = new("", "elementId");
 
-        public static ImmutableDictionary<string, string> Create(XmiInnerNode root)
+        public static ImmutableDictionary<string, string> Create(AbstractXmiNode root)
         {
             var xmiIdToCanonId = new Dictionary<string, string>();
             int sequenceNo = 0;
