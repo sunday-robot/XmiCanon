@@ -29,7 +29,14 @@ namespace XmiCanon2
                 var elementId = GetElementId(node);
                 if (elementId != null)
                 {
-                    xmiIdToCanonId.Add(xmiId, elementId);
+                    if (xmiIdToCanonId.ContainsKey(xmiId))
+                    {
+                        Console.Error.WriteLine($"xmi:id が重複しています。xmi:id={xmiId}, 登録済みelementId={xmiIdToCanonId[xmiId]}, 重複elementId={elementId}");
+                    }
+                    else
+                    {
+                        xmiIdToCanonId.Add(xmiId, elementId);
+                    }
                 }
                 else
                 {
