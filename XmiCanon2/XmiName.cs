@@ -1,5 +1,9 @@
 ﻿namespace XmiCanon2
 {
+    /// <summary>
+    /// immutable<br/>
+    /// 要素および属性の名前のためのもので、名前空間とローカルな名前の二つのプロパティを持つ。
+    /// </summary>
     public sealed class XmiName
     {
         public readonly string Space;

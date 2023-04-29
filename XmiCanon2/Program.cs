@@ -29,7 +29,7 @@ namespace XmiCanon2
         static void ParseWorkbenchXmi()
         {
             var xml = XDocument.Load("workbench.xmi");
-            PrintXElement2(xml.Root, string.Empty, 0);
+            PrintXElement2(xml.Root!, string.Empty, 0);
         }
 
         static void Sample()
@@ -37,7 +37,7 @@ namespace XmiCanon2
             //xmlファイルを指定する
             XDocument xml = XDocument.Load("sample.xml");
 
-            PrintXElement2(xml.Root, string.Empty, 0);
+            PrintXElement2(xml.Root!, string.Empty, 0);
 
             ////メンバー情報のタグ内の情報を取得する
             //IEnumerable<XElement> infos = from item in xml.Elements("メンバー情報")

@@ -1,6 +1,7 @@
 ﻿namespace XmiCanon2
 {
     /// <summary>
+    /// immutable<br/>
     /// 葉ノード<br/>
     /// 根、中間ノードとの差異は以下の2点。<br/>
     /// ・子ノードを持たない<br/>
